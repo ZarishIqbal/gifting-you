@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
-import AppForm from "../../components/form/AppForm";
-import AppFormField from "../../components/form/AppFormField";
+import AppForm from "@components/form/app-form";
+import AppFormField from "@components/form/app-form-field";
 import * as Yup from "yup";
-import SubmitButton from "../../components/form/SubmitButton";
+import SubmitButton from "@components/form/submit-button";
 import auth from "@react-native-firebase/auth";
 import Toast from "react-native-toast-message";
 

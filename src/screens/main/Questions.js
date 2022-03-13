@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { SafeAreaView, ScrollView, View } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
-import AppButton from "../../components/AppButton";
-import { Filter } from "../../components/FilterModal";
-import ModalError from "../../components/ModalError";
-import { SearchHeader } from "../../components/navigation/SearchHeader";
-import { SingleQuestion } from "../../components/questions/SingleQuestion";
-import colors from "../../config/colors";
-import uuid from "react-native-uuid";
+import { useSelector } from "react-redux";
+import AppButton from "@components/buttons/app-button";
+import { Filter } from "@components/modals/filter-modal";
+import ModalError from "@components/modals/error-modal";
+import { SearchHeader } from "@components/navigation/search-header";
+import { SingleQuestion } from "@components/questions/single-question";
+import colors from "@config/colors";
 import Toast from "react-native-toast-message";
-import { firestoreMerge } from "../../utils/merges";
-import { setMyRequests } from "../../redux/actions/rootStateActions";
-import { updateProfile } from "../../redux/actions/profileActions";
-import { addRequest } from "../../utils/firebaseFunction";
+import { firestoreMerge } from "@utils/merges";
+import { addRequest } from "@utils/firebaseFunction";
 
 const initialFilter = {
   popularity: { most_popular: false, least_popular: false },

@@ -2,24 +2,19 @@ import React, { useEffect, useState } from "react";
 import { View, Platform, ScrollView, Linking, Pressable } from "react-native";
 import * as Yup from "yup";
 
-import AppText from "../../components/AppText";
-import AppForm from "../../components/form/AppForm";
-import AppFormField from "../../components/form/AppFormField";
-import IconButton from "../../components/IconButton";
-import colors from "../../config/colors";
-import { Signup as styles } from "../../styles/styles";
-import {
-  signUp,
-  signUpWithApple,
-  signUpWithFacebook,
-  signUpWithGoogle,
-} from "../../utils/authfunctions";
-import SubmitButton from "../../components/form/SubmitButton";
-import { blankProfile } from "../../utils/helpers";
+import AppText from "@components/text/app-text";
+import AppForm from "@components/form/app-form";
+import AppFormField from "@components/form/app-form-field";
+import IconButton from "@components/buttons/icon-button";
+import colors from "@config/colors";
+import { Signup as styles } from "@styles/styles";
+import { signUp, signUpWithApple } from "@utils/authfunctions";
+import SubmitButton from "@components/form/submit-button";
+import { blankProfile } from "@utils/helpers";
 import auth from "@react-native-firebase/auth";
-import { createProfile } from "../../utils/firebaseFunction";
+import { createProfile } from "@utils/firebaseFunction";
 import Toast from "react-native-toast-message";
-import { AppleLogo, FacebookIcon, GoogleIcon } from "../../assests";
+import { AppleLogo, FacebookIcon, GoogleIcon } from "@assets";
 
 function Signup({ navigation }) {
   const [hidePassword, setHidePassword] = useState(true);

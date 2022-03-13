@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { FlatList, SafeAreaView, ScrollView, View } from "react-native";
 import { useSelector } from "react-redux";
-import AppButton from "../../components/AppButton";
-import { Filter } from "../../components/FilterModal";
-import GiftRequestCard from "../../components/GiftedRequestCard";
-import MainCard from "../../components/MainCard";
-import { SearchHeader } from "../../components/navigation/SearchHeader";
-import colors from "../../config/colors";
+import AppButton from "@components/buttons/app-button";
+import { Filter } from "@components/modals/filter-modal";
+import GiftRequestCard from "@components/cards/gifted-request-card";
+import MainCard from "@components/cards/main-card";
+import { SearchHeader } from "@components/navigation/search-header";
+import colors from "@config/colors";
 
 const initialFilter = {
   popularity: { most_popular: false, least_popular: false },

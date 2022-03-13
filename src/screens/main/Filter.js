@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
-import {StyleSheet, View} from 'react-native';
-import AppButton from '../../components/AppButton';
-import AppText from '../../components/AppText';
-import FilterButton from '../../components/FilterButton';
-import colors from '../../config/colors';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
+import AppButton from "@components/buttons/app-button";
+import AppText from "@components/text/app-text";
+import FilterButton from "@components/FilterButton";
+import colors from "@config/colors";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
 function Filter(props) {
   const [popularity, setPopulairty] = useState(true);
@@ -15,7 +15,8 @@ function Filter(props) {
       style={{
         flex: 1,
         backgroundColor: colors.white,
-      }}>
+      }}
+    >
       <AppText style={styles.title} en="Popularity" pt="pt popularity" />
       <View style={styles.filter}>
         <FilterButton
@@ -71,7 +72,7 @@ function Filter(props) {
       </View>
 
       <AppButton
-        onPress={() => console.log('Pressed')}
+        onPress={() => console.log("Pressed")}
         enTitle="Search"
         ptTitle="Pt Search"
         style={styles.button}
@@ -91,19 +92,19 @@ function Filter(props) {
 export default Filter;
 const styles = StyleSheet.create({
   filter: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignItems: "center",
   },
   title: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: colors.primary,
     marginBottom: 15,
     marginLeft: 10,
     marginTop: 25,
   },
   button: {
-    marginTop: '30%',
+    marginTop: "30%",
   },
 });

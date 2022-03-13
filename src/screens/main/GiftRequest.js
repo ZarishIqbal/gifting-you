@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { FlatList, SafeAreaView, ScrollView, View } from "react-native";
-import GiftRequestCard from "../../components/GiftRequestCard";
-import AppButton from "../../components/AppButton";
-import { ContactRequest, Submit } from "../../icons/icons";
-import SponsershipDropdown from "../../components/SponsershipDropdown";
-import colors from "../../config/colors";
-import { SearchHeader } from "../../components/navigation/SearchHeader";
-import { Filter } from "../../components/FilterModal";
+import { FlatList, SafeAreaView, View } from "react-native";
+import GiftRequestCard from "@components/cards/gift-request-card";
+import AppButton from "@components/buttons/app-button";
+import { ContactRequest, Submit } from "@assets/icons/icons";
+import colors from "@config/colors";
+import { SearchHeader } from "@components/navigation/search-header";
+import { Filter } from "@components/modals/filter-modal";
 import { useSelector } from "react-redux";
 
 const initialFilter = {

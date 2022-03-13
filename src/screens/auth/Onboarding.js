@@ -1,17 +1,17 @@
 import React from "react";
 import { View, Text, Image, Pressable } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
-import colors from "../../config/colors";
-import { elevation, OnboardingStyle as styles } from "../../styles/styles";
-import { getLocalizedString } from "../../config/functions";
-import AppText from "../../components/AppText";
+import colors from "@config/colors";
+import { elevation, OnboardingStyle as styles } from "@styles/styles";
+import { getLocalizedString } from "@config/functions";
+import AppText from "@components/text/app-text";
 import {
   GiftingYou,
   OnboardingBG,
   OnboardingScreen1,
   OnboardingScreen3,
   OnboardingScreen4,
-} from "../../assests";
+} from "@assets";
 const lan = "en";
 
 const slides = [

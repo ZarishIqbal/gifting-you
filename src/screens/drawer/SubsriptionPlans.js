@@ -2,11 +2,10 @@ import moment from "moment";
 import React, { useState } from "react";
 import { FlatList, SafeAreaView, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import AppButton from "../../components/AppButton";
-import SubscriptionCard from "../../components/SubscriptionCard";
-import colors from "../../config/colors";
-import { updateSubscription } from "../../redux/actions/settingActions";
-import { firestoreMerge } from "../../utils/merges";
+import AppButton from "@components/buttons/app-button";
+import SubscriptionCard from "@components/cards/subscription-card";
+import { updateSubscription } from "@actions/settingActions";
+import { firestoreMerge } from "@utils/merges";
 
 function SubsriptionPlans(props) {
   const [monthly, setMonthly] = useState(true);

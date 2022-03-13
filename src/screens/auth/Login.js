@@ -1,26 +1,18 @@
 import React, { useEffect, useState } from "react";
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  Image,
-  Platform,
-  Pressable,
-} from "react-native";
-import AppText from "../../components/AppText";
-import AppForm from "../../components/form/AppForm";
-import AppFormField from "../../components/form/AppFormField";
-import IconButton from "../../components/IconButton";
-import colors from "../../config/colors";
-import { Signup as styles } from "../../styles/styles";
+import { View, Platform, Pressable } from "react-native";
+import AppText from "@components/text/app-text";
+import AppForm from "@components/form/app-form";
+import AppFormField from "@components/form/app-form-field";
+import IconButton from "@components/buttons/icon-button";
+import colors from "@config/colors";
+import { Signup as styles } from "@styles/styles";
 import * as Yup from "yup";
-import SubmitButton from "../../components/form/SubmitButton";
+import SubmitButton from "@components/form/submit-button";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import auth from "@react-native-firebase/auth";
-import { signUp, signUpWithGoogle } from "../../utils/authfunctions";
+import { signUp } from "@utils/authfunctions";
 import Toast from "react-native-toast-message";
-import ForgotPassword from "./ForgotPassword";
-import { AppleLogo, FacebookIcon, GoogleIcon } from "../../assests";
+import { AppleLogo, FacebookIcon, GoogleIcon } from "@assets";
 
 function Login(props) {
   const [visible, setVisible] = useState({

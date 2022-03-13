@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Image, View } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import colors from "../config/colors";
-import AppText from "../components/AppText";
+import AppText from "@components/text/app-text";
 
 import {
   DrawerFavourite,
@@ -10,7 +10,7 @@ import {
   DrawerSettings,
   DrawerSubscription,
   RequestIcon,
-} from "../icons/icons";
+} from "@assets/icons/icons";
 
 import TabNavigator, {
   FavouritesNavigator,
@@ -21,12 +21,12 @@ import TabNavigator, {
   SettingsNavigator,
   SubscriptionNavigator,
 } from "./TabNavigator";
-import DrawerContent from "../components/navigation/DrawerContent";
+import DrawerContent from "@components/navigation/drawer-content";
 import { useDispatch, useSelector } from "react-redux";
 import LinearGradient from "react-native-linear-gradient";
 import firebase from "@react-native-firebase/firestore";
-import loadInitialState, { loadRequests } from "../redux/initialState";
-import { userImage } from "../redux/constants";
+import { userImage } from "@constants";
+import loadInitialState, { loadRequests } from "@redux/initialState";
 
 const myGradientColor = ["rgba(204, 113, 120, 0.6)", "rgba(71, 129, 126, 1)"];
 function DrawerNavigator(props) {
