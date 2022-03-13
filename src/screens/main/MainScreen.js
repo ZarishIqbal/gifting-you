@@ -29,7 +29,6 @@ function MainScreen(props) {
         data={requests}
         keyExtractor={(item) => item[0]}
         renderItem={({ item }) => {
-          console.log(item[1]);
           return (
             <Pressable
               onPress={() => {

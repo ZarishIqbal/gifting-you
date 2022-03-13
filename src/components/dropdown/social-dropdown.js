@@ -56,7 +56,6 @@ function SocialDropdown({
             name="chevron-down"
             onPress={() => {
               setOpen(true);
-              //console.log('up');
             }}
             size={26}
             color={colors.green}
@@ -66,7 +65,6 @@ function SocialDropdown({
             name="chevron-up"
             onPress={() => {
               setOpen(false);
-              //console.log("down");
             }}
             size={26}
             color={colors.green}

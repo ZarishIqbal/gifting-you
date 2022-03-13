@@ -131,5 +131,5 @@ export const signOut = async () => {
 };
 
 export const signUpWithApple = () => {
-  console.log("ll");
+  console.log("sign up with Apple");
 };

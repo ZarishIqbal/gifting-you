@@ -101,7 +101,6 @@ export const Requests = (props) => {
               data={Object.values(myRequests ?? {})}
               keyExtractor={(item) => item.id}
               renderItem={({ item }) => {
-                console.log(item);
                 return (
                   <View
                     style={{

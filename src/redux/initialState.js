@@ -39,11 +39,9 @@ const loadInitialState = (dispatch) => {
         );
       });
       getLikes().then((likes) => {
-        console.log(likes);
         dispatch(setLikes(likes));
       });
       getFavs().then((favs) => {
-        console.log(favs);
         dispatch(setFavourites(favs));
       });
     });

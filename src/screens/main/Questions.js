@@ -31,7 +31,6 @@ function Questions(props) {
   const profile = useSelector((state) => state.profile.profile);
 
   const sendRequest = () => {
-    console.log(profile.requests);
     if (profile.requests > 0) {
       firestoreMerge(
         ["users", { ...profile, requests: profile.requests - 1 }],

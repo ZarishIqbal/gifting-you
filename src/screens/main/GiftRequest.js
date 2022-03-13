@@ -45,7 +45,6 @@ function GiftRequest(props) {
                   onPress={() => {
                     setCount(count + 1);
                     if (count !== 0) setHide(false);
-                    console.log("request");
                   }}
                 />
               ) : approved ? (

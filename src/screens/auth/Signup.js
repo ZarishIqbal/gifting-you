@@ -20,63 +20,6 @@ function Signup({ navigation }) {
   const [hidePassword, setHidePassword] = useState(true);
   const [hideCPassword, setHideCPassword] = useState(true);
 
-  const [visible, setVisible] = useState({
-    state: false,
-    enmodalMessage: "",
-    ptmodalMessage: "",
-  });
-  const signUpWithEmail = (values) => {
-    console.log("hrll");
-    auth()
-      .createUserWithEmailAndPassword(values.email, values.password)
-      .then(({ user }) => {
-        const profile = {
-          ...blankProfile,
-          id: user.uid,
-          name: values.name,
-          contact_details: {
-            email: user.email ?? "",
-            number: user.phoneNumber ?? "",
-          },
-          image:
-            user.photoURL ??
-            "https://ukdj.imgix.net/455a0284eb7a4194d11239e17b11ab2a_/generic-user-profile_354184.png?auto=compress%2Cformat&ixlib=php-3.3.0&s=1eb3025fdb7932cd02c78b3d63348e3c",
-        };
-        createProfile(profile);
-        user.sendEmailVerification();
-      })
-      .catch((error) => {
-        console.log(error.message);
-        if (error.code === "auth/email-already-in-use") {
-          setVisible({
-            ...visible,
-            state: true,
-            enmodalMessage: "That email address is already in use!",
-            ptmodalMessage: "That email address is already in use!",
-          });
-          setTimeout(() => {
-            setVisible(false);
-          }, 2000);
-        } else if (error.code === "auth/invalid-email") {
-          setVisible({
-            state: true,
-            enmodalMessage: "That email address is invalid!",
-            ptmodalMessage: "That email address is invalid!",
-          });
-          setTimeout(() => {
-            setVisible(false);
-          }, 2000);
-        } else
-          setVisible({
-            state: true,
-            enmodalMessage: error.message.split("] ")[1],
-            ptmodalMessage: error.message.split("] ")[1],
-          });
-        setTimeout(() => {
-          setVisible(false);
-        }, 2000);
-      });
-  };
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Please provide your name"),
     email: Yup.string()
@@ -94,19 +37,6 @@ function Signup({ navigation }) {
       "Passwords must match"
     ),
   });
-
-  useEffect(() => {
-    if (visible.state) {
-      Toast.show({
-        type: "error",
-        text1: "Error Occured",
-        text2: visible.enmodalMessage,
-      });
-      setTimeout(() => {
-        Toast.hide();
-      }, 5000);
-    }
-  }, [visible]);
 
   return (
     <View style={{ flex: 1 }}>

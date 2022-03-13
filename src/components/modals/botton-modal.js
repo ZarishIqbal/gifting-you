@@ -18,7 +18,6 @@ export const BottomPopup = ({ visible, setVisible }) => {
   const [image, setImage] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log(visible);
     dispatch(updateProfileImage(image));
   }, [dispatch, image]);
 
@@ -28,7 +27,6 @@ export const BottomPopup = ({ visible, setVisible }) => {
       height: 400,
       cropping: true,
     }).then((response) => {
-      console.log(response);
       const { path } = response;
       setImage(path);
       uploadImageToStorage(path);
@@ -42,7 +40,6 @@ export const BottomPopup = ({ visible, setVisible }) => {
       height: 400,
       cropping: true,
     }).then((response) => {
-      console.log(response);
       const { path } = response;
       setImage(path);
       uploadImageToStorage(path);

@@ -8,8 +8,6 @@ import colors from "@config/colors";
 import { Signup as styles } from "@styles/styles";
 import * as Yup from "yup";
 import SubmitButton from "@components/form/submit-button";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import auth from "@react-native-firebase/auth";
 import { signUp } from "@utils/authfunctions";
 import Toast from "react-native-toast-message";
 import { AppleLogo, FacebookIcon, GoogleIcon } from "@assets";
@@ -73,17 +71,6 @@ function Login(props) {
     }
   }, [visible]);
 
-  const signInWithEmail = (values) => {
-    auth()
-      .signInWithEmailAndPassword(values.email, values.password)
-      .then((userCred) => {
-        AsyncStorage.multiSet([
-          ["id", userCred.user.uid],
-          ["user", JSON.stringify(userCred.user)],
-        ]).then((call) => console.log(call));
-      })
-      .catch((error) => handleError(error));
-  };
   const [hidePassword, setHidePassword] = useState(true);
   const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label("Email"),
