@@ -1,23 +1,11 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, { useEffect, useState } from "react";
-import {
-  FlatList,
-  Modal,
-  Pressable,
-  SafeAreaView,
-  View,
-  Text,
-  StyleSheet,
-} from "react-native";
-import AppText from "../../components/AppText";
-import MainCard from "../../components/MainCard";
+import React, { useState } from "react";
+import { FlatList, Pressable, SafeAreaView } from "react-native";
+import MainCard from "@components/cards/main-card";
 
-import { Filter } from "../../components/FilterModal";
-import { SearchHeader } from "../../components/navigation/SearchHeader";
-import colors from "../../config/colors";
+import { Filter } from "@components/modals/filter-modal";
+import { SearchHeader } from "@components/navigation/search-header";
+import colors from "@config/colors";
 import { useSelector } from "react-redux";
-import firebase from "@react-native-firebase/firestore";
-import auth from "@react-native-firebase/auth";
 
 const initialFilter = {
   popularity: { most_popular: false, least_popular: false },
@@ -41,7 +29,6 @@ function MainScreen(props) {
         data={requests}
         keyExtractor={(item) => item[0]}
         renderItem={({ item }) => {
-          console.log(item[1]);
           return (
             <Pressable
               onPress={() => {

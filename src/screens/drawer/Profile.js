@@ -7,18 +7,18 @@ import {
   Text,
   View,
 } from "react-native";
-import AppButton from "../../components/AppButton";
-import AppText from "../../components/AppText";
-import colors from "../../config/colors";
-import { UpgradePlan } from "../../icons/icons";
-import AboutmeDropdown from "../../components/AboutmeDropdown";
-import ContactDropdown from "../../components/ContactDropdown";
-import SocialDropdown from "../../components/SocialDropdown";
+import AppButton from "@components/buttons/app-button";
+import AppText from "@components/text/app-text";
+import colors from "@config/colors";
+import { UpgradePlan } from "@assets/icons/icons";
+import AboutmeDropdown from "@components/dropdown/about-me-dropdown";
+import ContactDropdown from "@components/dropdown/contact-dropdown";
+import SocialDropdown from "@components/dropdown/social-dropdown";
 import { useDispatch, useSelector } from "react-redux";
-import { updateProfile } from "../../redux/actions/profileActions";
-import { firestoreMerge } from "../../utils/merges";
+import { updateProfile } from "@actions/profileActions";
+import { firestoreMerge } from "@utils/merges";
 
-import { userImage } from "../../redux/constants";
+import { userImage } from "@constants";
 function Profile(props) {
   const profile = useSelector((state) => state.profile.profile);
   const [state, setLocalState] = useState(profile);

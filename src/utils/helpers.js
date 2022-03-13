@@ -57,9 +57,5 @@ export const defaultSetting = {
 
 export const getGeoLocation = (longitude, latitude) => {
   Geocoder.from(latitude, longitude)
-    .then((json) => {
-      var addressComponent = json.results[0].address_components[0];
-      console.log(addressComponent);
-    })
-    .catch((error) => console.warn(error));
+  .catch((error) => console.warn(error));
 };

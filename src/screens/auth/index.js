@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Pressable, View, Image } from "react-native";
-import AppText from "../../components/AppText";
-import colors from "../../config/colors";
-import { elevation, Signup as styles } from "../../styles/styles";
+import AppText from "@components/text/app-text";
+import colors from "@config/colors";
+import { Signup as styles } from "@styles/styles";
 import Login from "./Login";
 import Signup from "./Signup";
 import LinearGradient from "react-native-linear-gradient";
-import { myGradientColor } from "../../redux/constants";
-import Toast from "react-native-toast-message";
+import { myGradientColor } from "@constants";
+import { GiftingYou } from "@assets";
 
 function index(props) {
   const [activity, setActivity] = useState(false);
@@ -20,7 +20,7 @@ function index(props) {
             aspectRatio: 1,
             height: "100%",
           }}
-          source={require("../../assests/d4.png")}
+          source={GiftingYou}
         />
       </View>
 

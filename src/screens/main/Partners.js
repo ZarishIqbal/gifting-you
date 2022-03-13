@@ -7,11 +7,11 @@ import {
   StyleSheet,
   View,
 } from "react-native";
-import AppText from "../../components/AppText";
-import { Filter } from "../../components/FilterModal";
-import { SearchHeader } from "../../components/navigation/SearchHeader";
-import SponserCard from "../../components/SponserCard";
-import colors from "../../config/colors";
+import AppText from "@components/text/app-text";
+import { Filter } from "@components/modals/filter-modal";
+import { SearchHeader } from "@components/navigation/search-header";
+import SponserCard from "@components/cards/sponsor-card";
+import colors from "@config/colors";
 
 const initialFilter = {
   popularity: { most_popular: false, least_popular: false },

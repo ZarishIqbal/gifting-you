@@ -1,24 +1,24 @@
 import React from "react";
-import MainScreen from "../screens/main/MainScreen";
-import Questions from "../screens/main/Questions";
-import colors from "../config/colors";
+import MainScreen from "@screens/main/MainScreen";
+import Questions from "@screens/main/Questions";
+import colors from "@config/colors";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Requests } from "../screens/main/Requests";
-import { MyTabBar } from "../components/navigation/MyTabBar";
-import Favourites from "../screens/drawer/Favourites";
-import Profile from "../screens/drawer/Profile";
-import Settings from "../screens/drawer/Settings";
-import { NotificationScreen } from "../screens/drawer/NotificationScreen";
-import SubsriptionPlans from "../screens/drawer/SubsriptionPlans";
-import Partners from "../screens/main/Partners";
-import GiftRequest from "../screens/main/GiftRequest";
+import { Requests } from "@screens/main/Requests";
+import Favourites from "@screens/drawer/Favourites";
+import Profile from "@screens/drawer/Profile";
+import Settings from "@screens/drawer/Settings";
+import { NotificationScreen } from "@screens/drawer/NotificationScreen";
+import SubsriptionPlans from "@screens/drawer/SubsriptionPlans";
+import Partners from "@screens/main/Partners";
+import GiftRequest from "@screens/main/GiftRequest";
+import { CustomTabBar } from "@components/navigation/tab-bar";
 
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
   return (
     <Tab.Navigator
-      tabBar={(props) => <MyTabBar {...props} name="home" />}
+      tabBar={(props) => <CustomTabBar {...props} name="home" />}
       screenOptions={{
         activeTintColor: colors.primary,
         inactiveTintColor: "grey",
@@ -55,7 +55,7 @@ export default function TabNavigator() {
 export function GiftsNavigator() {
   return (
     <Tab.Navigator
-      tabBar={(props) => <MyTabBar {...props} name="gifts" />}
+      tabBar={(props) => <CustomTabBar {...props} name="gifts" />}
       screenOptions={{
         activeTintColor: colors.primary,
         inactiveTintColor: "grey",
@@ -81,7 +81,7 @@ export function GiftsNavigator() {
 export function RequestsNavigator() {
   return (
     <Tab.Navigator
-      tabBar={(props) => <MyTabBar {...props} name="requests" />}
+      tabBar={(props) => <CustomTabBar {...props} name="requests" />}
       screenOptions={{
         activeTintColor: colors.primary,
         inactiveTintColor: "grey",
@@ -108,7 +108,7 @@ export function RequestsNavigator() {
 export function FavouritesNavigator() {
   return (
     <Tab.Navigator
-      tabBar={(props) => <MyTabBar {...props} />}
+      tabBar={(props) => <CustomTabBar {...props} />}
       screenOptions={{
         activeTintColor: colors.primary,
         inactiveTintColor: "grey",
@@ -129,7 +129,7 @@ export function FavouritesNavigator() {
 export function SubscriptionNavigator() {
   return (
     <Tab.Navigator
-      tabBar={(props) => <MyTabBar {...props} />}
+      tabBar={(props) => <CustomTabBar {...props} />}
       screenOptions={{
         activeTintColor: colors.primary,
         inactiveTintColor: "grey",
@@ -151,7 +151,7 @@ export function SubscriptionNavigator() {
 export function SettingsNavigator() {
   return (
     <Tab.Navigator
-      tabBar={(props) => <MyTabBar {...props} />}
+      tabBar={(props) => <CustomTabBar {...props} />}
       screenOptions={{
         activeTintColor: colors.primary,
         inactiveTintColor: "grey",
@@ -173,7 +173,7 @@ export function SettingsNavigator() {
 export function NotificationNavigator() {
   return (
     <Tab.Navigator
-      tabBar={(props) => <MyTabBar {...props} />}
+      tabBar={(props) => <CustomTabBar {...props} />}
       screenOptions={{
         activeTintColor: colors.primary,
         inactiveTintColor: "grey",
@@ -195,7 +195,7 @@ export function NotificationNavigator() {
 export function ProfileNavigator() {
   return (
     <Tab.Navigator
-      tabBar={(props) => <MyTabBar {...props} />}
+      tabBar={(props) => <CustomTabBar {...props} />}
       screenOptions={{
         activeTintColor: colors.primary,
         inactiveTintColor: "grey",

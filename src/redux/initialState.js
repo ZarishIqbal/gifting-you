@@ -4,9 +4,9 @@ import {
   getPlans,
   getProfile,
   getQuestions,
-} from "../utils/firebaseFunction";
-import { updateProfile } from "../redux/actions/profileActions";
-import { updateSetting } from "../redux/actions/settingActions";
+} from "@utils/firebaseFunction";
+import { updateProfile } from "@actions/profileActions";
+import { updateSetting } from "@actions/settingActions";
 import {
   setFavourites,
   setLikes,
@@ -18,10 +18,7 @@ import {
 import firebase from "@react-native-firebase/firestore";
 import auth from "@react-native-firebase/auth";
 
-import Geocoder from "react-native-geocoding";
 const loadInitialState = (dispatch) => {
-  // const api = "AIzaSyB5GUoFkz8cQwbjcEFu3F-_rapfd2eG_tU";
-  // Geocoder.init(api);
   return firebase()
     .collection("users")
     .onSnapshot(async (complete) => {
@@ -42,11 +39,9 @@ const loadInitialState = (dispatch) => {
         );
       });
       getLikes().then((likes) => {
-        console.log(likes);
         dispatch(setLikes(likes));
       });
       getFavs().then((favs) => {
-        console.log(favs);
         dispatch(setFavourites(favs));
       });
     });

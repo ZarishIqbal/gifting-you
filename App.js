@@ -1,4 +1,4 @@
-import configureStore from "./store/configureStore";
+import configureStore from "./store/configure-store";
 import React, { Component, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import auth from "@react-native-firebase/auth";
@@ -30,9 +30,6 @@ export default class App extends Component {
   // Handle user state changes
 
   componentDidMount() {
-    // auth().signOut();
-    // clearState();
-    // GoogleSignin.signOut();
     firebase.auth().onUserChanged((user) => {
       if (user) {
         debounce(this.setState({ user: user }), 2000);

@@ -68,9 +68,6 @@ export const setAnswers = async (answers) => {
         }
       });
     });
-  // await firestore().collection("giftingyou-dev").doc("answers").set({
-  //   answers: answers,
-  // });
 };
 
 export const uploadImageToStorage = (path) => {

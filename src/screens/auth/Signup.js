@@ -2,85 +2,24 @@ import React, { useEffect, useState } from "react";
 import { View, Platform, ScrollView, Linking, Pressable } from "react-native";
 import * as Yup from "yup";
 
-import AppText from "../../components/AppText";
-import AppForm from "../../components/form/AppForm";
-import AppFormField from "../../components/form/AppFormField";
-import IconButton from "../../components/IconButton";
-import colors from "../../config/colors";
-import { Signup as styles } from "../../styles/styles";
-import {
-  signUp,
-  signUpWithApple,
-  signUpWithFacebook,
-  signUpWithGoogle,
-} from "../../utils/authfunctions";
-import SubmitButton from "../../components/form/SubmitButton";
-import { blankProfile } from "../../utils/helpers";
+import AppText from "@components/text/app-text";
+import AppForm from "@components/form/app-form";
+import AppFormField from "@components/form/app-form-field";
+import IconButton from "@components/buttons/icon-button";
+import colors from "@config/colors";
+import { Signup as styles } from "@styles/styles";
+import { signUp, signUpWithApple } from "@utils/authfunctions";
+import SubmitButton from "@components/form/submit-button";
+import { blankProfile } from "@utils/helpers";
 import auth from "@react-native-firebase/auth";
-import { createProfile } from "../../utils/firebaseFunction";
+import { createProfile } from "@utils/firebaseFunction";
 import Toast from "react-native-toast-message";
+import { AppleLogo, FacebookIcon, GoogleIcon } from "@assets";
 
 function Signup({ navigation }) {
   const [hidePassword, setHidePassword] = useState(true);
   const [hideCPassword, setHideCPassword] = useState(true);
 
-  const [visible, setVisible] = useState({
-    state: false,
-    enmodalMessage: "",
-    ptmodalMessage: "",
-  });
-  const signUpWithEmail = (values) => {
-    console.log("hrll");
-    auth()
-      .createUserWithEmailAndPassword(values.email, values.password)
-      .then(({ user }) => {
-        const profile = {
-          ...blankProfile,
-          id: user.uid,
-          name: values.name,
-          contact_details: {
-            email: user.email ?? "",
-            number: user.phoneNumber ?? "",
-          },
-          image:
-            user.photoURL ??
-            "https://ukdj.imgix.net/455a0284eb7a4194d11239e17b11ab2a_/generic-user-profile_354184.png?auto=compress%2Cformat&ixlib=php-3.3.0&s=1eb3025fdb7932cd02c78b3d63348e3c",
-        };
-        createProfile(profile);
-        user.sendEmailVerification();
-      })
-      .catch((error) => {
-        console.log(error.message);
-        if (error.code === "auth/email-already-in-use") {
-          setVisible({
-            ...visible,
-            state: true,
-            enmodalMessage: "That email address is already in use!",
-            ptmodalMessage: "That email address is already in use!",
-          });
-          setTimeout(() => {
-            setVisible(false);
-          }, 2000);
-        } else if (error.code === "auth/invalid-email") {
-          setVisible({
-            state: true,
-            enmodalMessage: "That email address is invalid!",
-            ptmodalMessage: "That email address is invalid!",
-          });
-          setTimeout(() => {
-            setVisible(false);
-          }, 2000);
-        } else
-          setVisible({
-            state: true,
-            enmodalMessage: error.message.split("] ")[1],
-            ptmodalMessage: error.message.split("] ")[1],
-          });
-        setTimeout(() => {
-          setVisible(false);
-        }, 2000);
-      });
-  };
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Please provide your name"),
     email: Yup.string()
@@ -98,19 +37,6 @@ function Signup({ navigation }) {
       "Passwords must match"
     ),
   });
-
-  useEffect(() => {
-    if (visible.state) {
-      Toast.show({
-        type: "error",
-        text1: "Error Occured",
-        text2: visible.enmodalMessage,
-      });
-      setTimeout(() => {
-        Toast.hide();
-      }, 5000);
-    }
-  }, [visible]);
 
   return (
     <View style={{ flex: 1 }}>
@@ -206,19 +132,10 @@ function Signup({ navigation }) {
           <View
             style={{ flexDirection: "row", justifyContent: "space-evenly" }}
           >
-            <IconButton
-              onPress={() => signUp("fb")}
-              src={require("../../assests/Fb.png")}
-            />
-            <IconButton
-              onPress={() => signUp("google")}
-              src={require("../../assests/google.png")}
-            />
+            <IconButton onPress={() => signUp("fb")} src={FacebookIcon} />
+            <IconButton onPress={() => signUp("google")} src={GoogleIcon} />
             {Platform.OS === "ios" && (
-              <IconButton
-                onPress={signUpWithApple}
-                src={require("../../assests/apple.png")}
-              />
+              <IconButton onPress={signUpWithApple} src={AppleLogo} />
             )}
           </View>
         </View>

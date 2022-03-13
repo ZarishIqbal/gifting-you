@@ -1,25 +1,16 @@
 import React, { useEffect, useState } from "react";
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  Image,
-  Platform,
-  Pressable,
-} from "react-native";
-import AppText from "../../components/AppText";
-import AppForm from "../../components/form/AppForm";
-import AppFormField from "../../components/form/AppFormField";
-import IconButton from "../../components/IconButton";
-import colors from "../../config/colors";
-import { Signup as styles } from "../../styles/styles";
+import { View, Platform, Pressable } from "react-native";
+import AppText from "@components/text/app-text";
+import AppForm from "@components/form/app-form";
+import AppFormField from "@components/form/app-form-field";
+import IconButton from "@components/buttons/icon-button";
+import colors from "@config/colors";
+import { Signup as styles } from "@styles/styles";
 import * as Yup from "yup";
-import SubmitButton from "../../components/form/SubmitButton";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import auth from "@react-native-firebase/auth";
-import { signUp, signUpWithGoogle } from "../../utils/authfunctions";
+import SubmitButton from "@components/form/submit-button";
+import { signUp } from "@utils/authfunctions";
 import Toast from "react-native-toast-message";
-import ForgotPassword from "./ForgotPassword";
+import { AppleLogo, FacebookIcon, GoogleIcon } from "@assets";
 
 function Login(props) {
   const [visible, setVisible] = useState({
@@ -80,17 +71,6 @@ function Login(props) {
     }
   }, [visible]);
 
-  const signInWithEmail = (values) => {
-    auth()
-      .signInWithEmailAndPassword(values.email, values.password)
-      .then((userCred) => {
-        AsyncStorage.multiSet([
-          ["id", userCred.user.uid],
-          ["user", JSON.stringify(userCred.user)],
-        ]).then((call) => console.log(call));
-      })
-      .catch((error) => handleError(error));
-  };
   const [hidePassword, setHidePassword] = useState(true);
   const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label("Email"),
@@ -177,18 +157,15 @@ function Login(props) {
         <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
           <IconButton
             onPress={() => signUp("fb", undefined, true)}
-            src={require("../../assests/Fb.png")}
+            src={FacebookIcon}
           />
-          <IconButton
-            onPress={() => signUp("google")}
-            src={require("../../assests/google.png")}
-          />
+          <IconButton onPress={() => signUp("google")} src={GoogleIcon} />
           {Platform.OS === "ios" && (
             <IconButton
               onPress={() => {
                 console.log("Pressed");
               }}
-              src={require("../../assests/apple.png")}
+              src={AppleLogo}
             />
           )}
         </View>
