@@ -7,7 +7,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import LinearGradient from "react-native-linear-gradient";
 import { myGradientColor } from "../../redux/constants";
-import Toast from "react-native-toast-message";
+import { GiftingYou } from "../../assests";
 
 function index(props) {
   const [activity, setActivity] = useState(false);
@@ -20,7 +20,7 @@ function index(props) {
             aspectRatio: 1,
             height: "100%",
           }}
-          source={require("../../assests/d4.png")}
+          source={GiftingYou}
         />
       </View>
 

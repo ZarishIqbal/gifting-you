@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { loadState, saveState } from "../src/utils/localstorage";
 import { debounce } from "../src/utils";
-import { rootReducer } from "./configureStore";
+import { rootReducer } from "./configure-store";
 
 const initialState = loadState();
 

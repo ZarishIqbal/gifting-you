@@ -20,6 +20,7 @@ import auth from "@react-native-firebase/auth";
 import { signUp, signUpWithGoogle } from "../../utils/authfunctions";
 import Toast from "react-native-toast-message";
 import ForgotPassword from "./ForgotPassword";
+import { AppleLogo, FacebookIcon, GoogleIcon } from "../../assests";
 
 function Login(props) {
   const [visible, setVisible] = useState({
@@ -177,18 +178,15 @@ function Login(props) {
         <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
           <IconButton
             onPress={() => signUp("fb", undefined, true)}
-            src={require("../../assests/Fb.png")}
+            src={FacebookIcon}
           />
-          <IconButton
-            onPress={() => signUp("google")}
-            src={require("../../assests/google.png")}
-          />
+          <IconButton onPress={() => signUp("google")} src={GoogleIcon} />
           {Platform.OS === "ios" && (
             <IconButton
               onPress={() => {
                 console.log("Pressed");
               }}
-              src={require("../../assests/apple.png")}
+              src={AppleLogo}
             />
           )}
         </View>

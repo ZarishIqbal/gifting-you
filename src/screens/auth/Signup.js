@@ -19,6 +19,7 @@ import { blankProfile } from "../../utils/helpers";
 import auth from "@react-native-firebase/auth";
 import { createProfile } from "../../utils/firebaseFunction";
 import Toast from "react-native-toast-message";
+import { AppleLogo, FacebookIcon, GoogleIcon } from "../../assests";
 
 function Signup({ navigation }) {
   const [hidePassword, setHidePassword] = useState(true);
@@ -206,19 +207,10 @@ function Signup({ navigation }) {
           <View
             style={{ flexDirection: "row", justifyContent: "space-evenly" }}
           >
-            <IconButton
-              onPress={() => signUp("fb")}
-              src={require("../../assests/Fb.png")}
-            />
-            <IconButton
-              onPress={() => signUp("google")}
-              src={require("../../assests/google.png")}
-            />
+            <IconButton onPress={() => signUp("fb")} src={FacebookIcon} />
+            <IconButton onPress={() => signUp("google")} src={GoogleIcon} />
             {Platform.OS === "ios" && (
-              <IconButton
-                onPress={signUpWithApple}
-                src={require("../../assests/apple.png")}
-              />
+              <IconButton onPress={signUpWithApple} src={AppleLogo} />
             )}
           </View>
         </View>

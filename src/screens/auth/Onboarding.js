@@ -3,11 +3,15 @@ import { View, Text, Image, Pressable } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
 import colors from "../../config/colors";
 import { elevation, OnboardingStyle as styles } from "../../styles/styles";
-import AntDesign from "react-native-vector-icons/AntDesign";
 import { getLocalizedString } from "../../config/functions";
 import AppText from "../../components/AppText";
-import { useSelector } from "react-redux";
-
+import {
+  GiftingYou,
+  OnboardingBG,
+  OnboardingScreen1,
+  OnboardingScreen3,
+  OnboardingScreen4,
+} from "../../assests";
 const lan = "en";
 
 const slides = [
@@ -15,7 +19,7 @@ const slides = [
     key: 1,
     title: getLocalizedString("Tell to the world ", "diga ao mundo "),
     text: getLocalizedString("what you are looking for", "o que você quer"),
-    image: require("../../assests/ThoughtsPage1.png"),
+    image: OnboardingScreen3,
     backgroundColor: colors.primary,
   },
   {
@@ -28,14 +32,14 @@ const slides = [
       " being spread to world ",
       "ser partilhado pelo mundo"
     ),
-    image: require("../../assests/WorldPage2.png"),
+    image: OnboardingScreen4,
     backgroundColor: colors.primary,
   },
   {
     key: 3,
     title: getLocalizedString("On the coming days", "nos próximos dias "),
     text: getLocalizedString(" you will get some news", "vai receber notícias"),
-    image: require("../../assests/Exciting3.png"),
+    image: OnboardingScreen1,
     backgroundColor: colors.primary,
   },
 ];
@@ -43,7 +47,7 @@ export default function OnboardingScreen({ navigation }) {
   const _renderItem = ({ item }) => {
     return (
       <View style={styles.slide}>
-        <Image style={styles.icon} source={require("../../assests/d4.png")} />
+        <Image style={styles.icon} source={GiftingYou} />
         <Image style={styles.image} source={item.image} />
         <Image
           style={{
@@ -54,7 +58,7 @@ export default function OnboardingScreen({ navigation }) {
             zIndex: 0,
             maxHeight: "75%",
           }}
-          source={require("../../assests/OnboardingComponent.png")}
+          source={OnboardingBG}
         ></Image>
         <View
           style={{
@@ -95,7 +99,6 @@ export default function OnboardingScreen({ navigation }) {
         bottomButton={false}
         showNextButton={false}
         dotClickEnabled
-        // showDoneButton={false}
         bounces={true}
         doneLabel="Done"
         onDone={() => navigation.navigate("Auth")}
